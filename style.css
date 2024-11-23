@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Crimson Text", serif;
+}
+
+table {
+  margin: 0 auto 20px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+tfoot {
+  background-color: rgba(240, 230, 140, 0.4);
+}
+
+tfoot, .change, .total-occupied, .total-occupied-percentage {
+  font-weight: 700;
+}
+
+.inner-link {
+  text-decoration: none;
+  color: black;
+}
+
+.heading {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.date {
+  /* background-color: darkturquoise; */
+  background-color: rgb(223, 223, 223);
+}
+
+.significant-gain {
+  color: rgb(0, 201, 0);
+}
+
+.insignificant-gain {
+  color: rgb(164, 223, 2);
+}
+
+.stable {
+  color: rgb(158, 158, 0);
+}
+
+.insignificant-loss {
+  color: rgb(255, 168, 53);
+}
+
+.significant-loss {
+  color: rgb(248, 17, 17);
+}
