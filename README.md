@@ -1,1 +1,1 @@
-Day by day stats on the war in Ukraine.
+[Day by day stats on the war in Ukraine.](https://maximzhuravlov.github.io/WarStats/)
