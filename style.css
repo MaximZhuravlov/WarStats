@@ -39,6 +39,11 @@ tfoot, .change, .total-occupied, .total-occupied-percentage {
   color: black;
 }
 
+.year-link {
+  display: block;
+  text-align: center;
+}
+
 .heading {
   text-align: center;
   margin: 10px 0;
