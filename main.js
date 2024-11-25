@@ -33,7 +33,9 @@ function calculateChange(table) {
       Number(row.querySelector(".liberated").textContent.replace(",", "."));
     const change = liberated - occupied;
     row.querySelector(".change").textContent = 
-      change.toFixed(2).replace(".", ",");
+      change > 0
+        ? "+" + change.toFixed(2).replace(".", ",")
+        : change.toFixed(2).replace(".", ",");
   });
 }
 
@@ -57,7 +59,9 @@ function calculateSum(table) {
   tFoot.querySelector(".occupied").textContent = 
     occupiedTotal.toFixed(2).replace(".", ",");
   tFoot.querySelector(".change").textContent = 
-    changeTotal.toFixed(2).replace(".", ",");
+    changeTotal > 0
+      ? "+" + changeTotal.toFixed(2).replace(".", ",")
+      : changeTotal.toFixed(2).replace(".", ",");
 }
 
 function calculatePercentage(table) {
@@ -86,11 +90,11 @@ function setColor(table) {
       liberatedCells[i].classList.add("significant-gain");
     }
 
-    if (cellValue > 3 && cellValue < 10) {
+    if (cellValue > 5 && cellValue < 10) {
       liberatedCells[i].classList.add("insignificant-gain");
     }
 
-    if (cellValue <= 3) {
+    if (cellValue <= 5) {
       liberatedCells[i].classList.add("stable");
     }
   }
@@ -104,11 +108,11 @@ function setColor(table) {
       occupiedCells[i].classList.add("significant-loss");
     }
 
-    if (cellValue > 3 && cellValue < 10) {
+    if (cellValue > 5 && cellValue < 10) {
       occupiedCells[i].classList.add("insignificant-loss");
     }
 
-    if (cellValue <= 3) {
+    if (cellValue <= 5) {
       occupiedCells[i].classList.add("stable");
     }
   }
@@ -122,15 +126,15 @@ function setColor(table) {
       changeCells[i].classList.add("significant-gain");
     }
 
-    if (cellValue > 3 && cellValue < 10) {
+    if (cellValue > 5 && cellValue < 10) {
       changeCells[i].classList.add("insignificant-gain");
     }
 
-    if (cellValue >= -3 && cellValue <= 3) {
+    if (cellValue >= -5 && cellValue <= 5) {
       changeCells[i].classList.add("stable");
     }
 
-    if (cellValue < -3 && cellValue > -10) {
+    if (cellValue < -5 && cellValue > -10) {
       changeCells[i].classList.add("insignificant-loss");
     }
 

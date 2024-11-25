@@ -63,7 +63,8 @@ tfoot, .change, .total-occupied, .total-occupied-percentage {
 }
 
 .stable {
-  color: rgb(158, 158, 0);
+  /* color: rgb(158, 158, 0); */
+  color: rgb(4, 188, 212);
 }
 
 .insignificant-loss {
