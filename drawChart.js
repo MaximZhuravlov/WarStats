@@ -25,52 +25,145 @@ const importantEvents = [
   {
     name: "Avdiivka falls",
     date: new Date(2024, 1, 17),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: -15, y: -35
+    },
+    lineParameters: {
+      "x2": 10, "y2": -28
+    }
   },
   {
     name: "Ocheretino breakthrough",
     date: new Date(2024, 3, 21),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: 17, y: 8
+    },
+    lineParameters: {
+      "x2": 16, "y2": 7
+    }
   },
   {
     name: "Volchansk offensive",
     date: new Date(2024, 4, 10),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: 35, y: 0
+    },
+    lineParameters: {
+      "x2": 33, "y2": 0
+    }
   },
   {
     name: "New York offensive",
     date: new Date(2024, 6, 3),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: 30, y: 10
+    },
+    lineParameters: {
+      "x2": 28, "y2": 9
+    }
   },
   {
     name: "Kursk offensive",
     date: new Date(2024, 7, 6),
-    country: "Ukraine"
+    country: "Ukraine",
+    textTranslate: {
+      x: 30, y: 10
+    },
+    lineParameters: {
+      "x2": 28, "y2": 9
+    }
   },
   {
     name: "Novogrodovka falls",
     date: new Date(2024, 7, 28),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: 30, y: 10
+    },
+    lineParameters: {
+      "x2": 28, "y2": 9
+    }
   },
   {
     name: "Nevelskoe and Krasnogorovka fall",
     date: new Date(2024, 8, 11),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: 30, y: 10
+    },
+    lineParameters: {
+      "x2": 28, "y2": 9
+    }
   },
   {
     name: "Ukrainsk falls",
     date: new Date(2024, 8, 24),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: 30, y: 10
+    },
+    lineParameters: {
+      "x2": 28, "y2": 9
+    }
   },
   {
     name: "Ugledar falls",
     date: new Date(2024, 9, 2),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: 30, y: 3
+    },
+    lineParameters: {
+      "x2": 28, "y2": 3
+    }
   },
   {
     name: "New York falls",
     date: new Date(2024, 9, 16),
-    country: "Russia"
+    country: "Russia",
+    textTranslate: {
+      x: -85, y: -25
+    },
+    lineParameters: {
+      "x2": -45, "y2": -18
+    }
+  },
+  {
+    name: "Selidovo and Gorniak fall",
+    date: new Date(2024, 9, 30),
+    country: "Russia",
+    textTranslate: {
+      x: 30, y: 3
+    },
+    lineParameters: {
+      "x2": 28, "y2": 3
+    }
+  },
+  {
+    name: "Kurakhovo falls",
+    date: new Date(2025, 0, 10),
+    country: "Russia",
+    textTranslate: {
+      x: 30, y: 3
+    },
+    lineParameters: {
+      "x2": 28, "y2": 3
+    }
+  },
+  {
+    name: "Velikaya Novosiolka falls",
+    date: new Date(2025, 0, 29),
+    country: "Russia",
+    textTranslate: {
+      x: -100, y: -25
+    },
+    lineParameters: {
+      "x2": -45, "y2": -18
+    }
   }
 ];
 
@@ -148,15 +241,39 @@ function drawChart(data) {
       .attr("stroke", "lightcoral")
       .attr("stroke-width", "2");
 
-  // Drawing circles
-  innerChart
-    .selectAll("circle")
+  // Drawing circles and adding labels and lines to them
+  const circlesAndLabels = innerChart
+    .selectAll("g.important-event")
     .data(importantEvents)
-    .join("circle")
+    .join("g")
+      .attr("class", "important-event")
+      .attr("transform", d => `translate(${xScale(d.date)}, ${yScale(data.find(datum => datum.date.getFullYear() === d.date.getFullYear() && datum.date.getMonth() === d.date.getMonth() && datum.date.getDate() === d.date.getDate()).yearLoss)})`)
+  
+  circlesAndLabels
+    .append("circle")
       .attr("r", 3)
-      .attr("cx", d => xScale(d.date))
-      .attr("cy", d => 
-        yScale(data.find(datum => datum.date.getFullYear() === d.date.getFullYear() && datum.date.getMonth() === d.date.getMonth() && datum.date.getDate() === d.date.getDate()).yearLoss)
-      )
+      .attr("cx", 0)
+      .attr("cy", 0)
       .attr("fill", d => d.country === "Russia" ? "red" : "lime");
+
+  circlesAndLabels
+    .append("text")
+      .attr("class", "important-event-text")
+      .attr("transform", d => {
+        if (d.textTranslate) {
+          return `translate(${d.textTranslate.x}, ${d.textTranslate.y})`;
+        }
+      })
+      .attr("dominant-baseline", "middle")
+      .text(d => d.name);
+
+  circlesAndLabels
+    .append("line")
+      .attr("x1", 0)
+      .attr("y1", 0)
+      .attr("x2", d => d.lineParameters ? d.lineParameters.x2 : 50
+      )
+      .attr("y2", d => d.lineParameters ? d.lineParameters.y2 : 50)
+      .attr("stroke", d => d.country === "Russia" ? "red" : "lime")
+      .attr("stroke-width", 1);
 }
