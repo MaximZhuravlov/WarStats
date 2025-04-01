@@ -47,17 +47,21 @@ function calculateSum(table) {
     .map(cell => cell.textContent)
     .map(element => Number(element.replace(",", ".")))
     .reduce((sum, current) => sum + current);
+
   const occupiedTotal = 
     [...table.querySelectorAll(".occupied")]
     .map(cell => cell.textContent)
     .map(element => Number(element.replace(",", ".")))
     .reduce((sum, current) => sum + current);
+
   const changeTotal = liberatedTotal - occupiedTotal;
 
   tFoot.querySelector(".liberated").textContent = 
     liberatedTotal.toFixed(2).replace(".", ",");
+
   tFoot.querySelector(".occupied").textContent = 
     occupiedTotal.toFixed(2).replace(".", ",");
+    
   tFoot.querySelector(".change").textContent = 
     changeTotal > 0
       ? "+" + changeTotal.toFixed(2).replace(".", ",")
