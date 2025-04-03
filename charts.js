@@ -201,7 +201,8 @@ function drawChart(data) {
   // Adding X and Y axes
   const xAxis = d3
     .axisBottom(xScale)
-    .tickFormat(d3.timeFormat("%b %y"));
+    .tickFormat(d3.timeFormat("%b %y"))
+    .tickSizeOuter(0);
 
   const yAxis = d3
     .axisLeft(yScale)
