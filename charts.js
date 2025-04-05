@@ -1,6 +1,6 @@
 "use strict";
 
-d3.dsv(";", "dailyStats.csv", function(d) {
+d3.dsv(";", "dailyStats.csv", d => {
   if (d.year_value) {
     const splitted = d.date.split(".");
 
@@ -260,11 +260,7 @@ function drawChart(data) {
   circlesAndLabels
     .append("text")
       .attr("class", "important-event-text")
-      .attr("transform", d => {
-        if (d.textTranslate) {
-          return `translate(${d.textTranslate.x}, ${d.textTranslate.y})`;
-        }
-      })
+      .attr("transform", d => `translate(${d.textTranslate.x}, ${d.textTranslate.y})`)
       .attr("dominant-baseline", "middle")
       .text(d => d.name);
 
@@ -272,9 +268,8 @@ function drawChart(data) {
     .append("line")
       .attr("x1", 0)
       .attr("y1", 0)
-      .attr("x2", d => d.lineParameters ? d.lineParameters.x2 : 50
-      )
-      .attr("y2", d => d.lineParameters ? d.lineParameters.y2 : 50)
+      .attr("x2", d => d.lineParameters.x2)
+      .attr("y2", d => d.lineParameters.y2)
       .attr("stroke", d => d.country === "Russia" ? "red" : "lime")
       .attr("stroke-width", 1);
 }

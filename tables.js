@@ -29,9 +29,12 @@ function calculateChange(table) {
   rows.forEach(row => {
     const occupied = 
       Number(row.querySelector(".occupied").textContent.replace(",", "."));
+
     const liberated = 
       Number(row.querySelector(".liberated").textContent.replace(",", "."));
+
     const change = liberated - occupied;
+
     row.querySelector(".change").textContent = 
       change > 0
         ? "+" + change.toFixed(2).replace(".", ",")
@@ -87,6 +90,7 @@ function calculatePercentage(table) {
 function setColor(table) {
   // set color for liberated cells
   const liberatedCells = table.querySelectorAll("tbody .liberated");
+
   for (let i = 0; i < liberatedCells.length; i++) {
     const cellValue = Number(liberatedCells[i].textContent.replace(",", "."));
     
@@ -105,6 +109,7 @@ function setColor(table) {
   
   // set color for occupied cells
   const occupiedCells = table.querySelectorAll("tbody .occupied");
+
   for (let i = 0; i < occupiedCells.length; i++) {
     const cellValue = Number(occupiedCells[i].textContent.replace(",", "."));
 
@@ -123,6 +128,7 @@ function setColor(table) {
 
   // set color for change cells
   const changeCells = table.querySelectorAll("tbody .change");
+  
   for (let i = 0; i < changeCells.length; i++) {
     const cellValue = Number(changeCells[i].textContent.replace(",", "."));
 
