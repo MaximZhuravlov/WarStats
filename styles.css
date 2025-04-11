@@ -54,6 +54,10 @@ tfoot, .change, .total-occupied, .total-occupied-percentage {
   background-color: rgb(223, 223, 223);
 }
 
+.decisive-gain {
+  color: rgb(2, 136, 2);
+}
+
 .significant-gain {
   color: rgb(0, 201, 0);
 }
@@ -71,7 +75,11 @@ tfoot, .change, .total-occupied, .total-occupied-percentage {
 }
 
 .significant-loss {
-  color: rgb(248, 17, 17);
+  color: rgb(250, 45, 45);
+}
+
+.decisive-loss {
+  color: rgb(158, 4, 4);
 }
 
 .charts-body {

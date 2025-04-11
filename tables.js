@@ -93,8 +93,12 @@ function setColor(table) {
 
   for (let i = 0; i < liberatedCells.length; i++) {
     const cellValue = Number(liberatedCells[i].textContent.replace(",", "."));
+
+    if (cellValue > 50) {
+      liberatedCells[i].classList.add("decisive-gain");
+    }
     
-    if (cellValue >= 10) {
+    if (cellValue >= 10 && cellValue < 50) {
       liberatedCells[i].classList.add("significant-gain");
     }
 
@@ -113,7 +117,11 @@ function setColor(table) {
   for (let i = 0; i < occupiedCells.length; i++) {
     const cellValue = Number(occupiedCells[i].textContent.replace(",", "."));
 
-    if (cellValue >= 10) {
+    if (cellValue >= 50) {
+      occupiedCells[i].classList.add("decisive-loss");
+    }
+
+    if (cellValue >= 10 && cellValue < 50) {
       occupiedCells[i].classList.add("significant-loss");
     }
 
@@ -132,7 +140,11 @@ function setColor(table) {
   for (let i = 0; i < changeCells.length; i++) {
     const cellValue = Number(changeCells[i].textContent.replace(",", "."));
 
-    if (cellValue >= 10) {
+    if (cellValue >= 50) {
+      changeCells[i].classList.add("decisive-gain");
+    }
+
+    if (cellValue >= 10 && cellValue < 50) {
       changeCells[i].classList.add("significant-gain");
     }
 
@@ -148,8 +160,12 @@ function setColor(table) {
       changeCells[i].classList.add("insignificant-loss");
     }
 
-    if (cellValue <= -10) {
+    if (cellValue <= -10 && cellValue > -50) {
       changeCells[i].classList.add("significant-loss");
+    }
+
+    if (cellValue <= -50) {
+      changeCells[i].classList.add("decisive-loss");
     }
   }
 
@@ -157,7 +173,11 @@ function setColor(table) {
   const footLiberatedCell = table.querySelector("tfoot .liberated");
   const footLiberatedCellValue = Number(footLiberatedCell.textContent.replace(",", "."));
 
-  if (footLiberatedCellValue >= 150) {
+  if (footLiberatedCellValue >= 1000) {
+    footLiberatedCell.classList.add("decisive-gain");
+  }
+
+  if (footLiberatedCellValue >= 150 && footLiberatedCellValue < 1000) {
     footLiberatedCell.classList.add("significant-gain");
   }
 
@@ -173,7 +193,11 @@ function setColor(table) {
   const footOccupiedCell = table.querySelector("tfoot .occupied");
   const footOccupiedCellValue = Number(footOccupiedCell.textContent.replace(",", "."));
 
-  if (footOccupiedCellValue >= 150) {
+  if (footOccupiedCellValue >= 1000) {
+    footOccupiedCell.classList.add("decisive-loss");
+  }
+
+  if (footOccupiedCellValue >= 150 && footOccupiedCellValue < 1000) {
     footOccupiedCell.classList.add("significant-loss");
   }
 
@@ -189,7 +213,11 @@ function setColor(table) {
   const footChangeCell = table.querySelector("tfoot .change");
   const footChangeCellValue = Number(footChangeCell.textContent.replace(",", "."));
 
-  if (footChangeCellValue >= 150) {
+  if (footChangeCellValue >= 1000) {
+    footChangeCell.classList.add("decisive-gain");
+  }
+
+  if (footChangeCellValue >= 150 && footChangeCellValue < 1000) {
     footChangeCell.classList.add("significant-gain");
   }
 
@@ -205,7 +233,11 @@ function setColor(table) {
     footChangeCell.classList.add("insignificant-loss");
   }
 
-  if (footChangeCellValue <= -150) {
+  if (footChangeCellValue <= -150 && footChangeCellValue > -1000) {
     footChangeCell.classList.add("significant-loss");
+  }
+
+  if (footChangeCellValue <= -1000) {
+    footChangeCell.classList.add("decisive-loss");
   }
 }
