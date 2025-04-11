@@ -199,13 +199,11 @@ function drawChart(data) {
     .range([innerHeight, 0]);
 
   // Adding X and Y axes
-  const xAxis = d3
-    .axisBottom(xScale)
+  const xAxis = d3.axisBottom(xScale)
     .tickFormat(d3.timeFormat("%b %y"))
     .tickSizeOuter(0);
 
-  const yAxis = d3
-    .axisLeft(yScale)
+  const yAxis = d3.axisLeft(yScale)
     .tickValues(d3.range(0, maxDomainYearValue + 1, 250));
 
   innerChart
