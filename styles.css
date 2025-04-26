@@ -8,12 +8,17 @@
   margin: 0;
 }
 
+body {
+  background-color: black;
+  color: white;
+}
+
 table {
   margin: 0 auto 20px;
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid white;
   border-collapse: collapse;
 }
 
@@ -23,12 +28,13 @@ th, td {
   font-size: 16px;
 }
 
-th {
-  background-color: rgba(0, 0, 0, 0.1);
+th, .date {
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 tfoot {
-  background-color: rgba(240, 230, 140, 0.4);
+  /* background-color: rgba(240, 230, 140, 0.3); */
+  background-color: rgba(175, 161, 29, 0.25);
 }
 
 tfoot, .change, .total-occupied, .total-occupied-percentage {
@@ -37,10 +43,11 @@ tfoot, .change, .total-occupied, .total-occupied-percentage {
 
 .inner-link {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .year-link {
+  color: white;
   display: block;
   text-align: center;
 }
@@ -50,24 +57,30 @@ tfoot, .change, .total-occupied, .total-occupied-percentage {
   margin: 10px 0;
 }
 
-.date {
-  background-color: rgb(223, 223, 223);
-}
-
 .decisive-gain {
-  color: rgb(2, 136, 2);
+  /* color: rgb(2, 136, 2); */
+  color: #006837;
 }
 
 .significant-gain {
-  color: rgb(0, 201, 0);
+  /* color: rgb(0, 201, 0); */
+  color: #66BD63;
 }
 
 .insignificant-gain {
   color: rgb(164, 223, 2);
 }
 
-.stable {
+.minuscule-gain {
+  color: rgb(166, 217, 106);
+}
+
+/* .stable {
   color: rgb(4, 188, 212);
+} */
+
+.minuscule-loss {
+  color: rgb(254, 224, 139);
 }
 
 .insignificant-loss {
@@ -80,11 +93,6 @@ tfoot, .change, .total-occupied, .total-occupied-percentage {
 
 .decisive-loss {
   color: rgb(158, 4, 4);
-}
-
-.charts-body {
-  background-color: black;
-  color: white;
 }
 
 .charts-container {

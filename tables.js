@@ -106,8 +106,8 @@ function setColor(table) {
       liberatedCells[i].classList.add("insignificant-gain");
     }
 
-    if (cellValue <= 5) {
-      liberatedCells[i].classList.add("stable");
+    if (cellValue <= 5 && cellValue > 0) {
+      liberatedCells[i].classList.add("minuscule-gain");
     }
   }
   
@@ -129,8 +129,8 @@ function setColor(table) {
       occupiedCells[i].classList.add("insignificant-loss");
     }
 
-    if (cellValue <= 5) {
-      occupiedCells[i].classList.add("stable");
+    if (cellValue <= 5 && cellValue > 0) {
+      occupiedCells[i].classList.add("minuscule-loss");
     }
   }
 
@@ -152,8 +152,12 @@ function setColor(table) {
       changeCells[i].classList.add("insignificant-gain");
     }
 
-    if (cellValue >= -5 && cellValue <= 5) {
-      changeCells[i].classList.add("stable");
+    if (cellValue > 0 && cellValue <= 5) {
+      changeCells[i].classList.add("minuscule-gain");
+    }
+
+    if (cellValue < 0 && cellValue >= -5) {
+      changeCells[i].classList.add("minuscule-loss");
     }
 
     if (cellValue < -5 && cellValue > -10) {
@@ -185,8 +189,8 @@ function setColor(table) {
     footLiberatedCell.classList.add("insignificant-gain");
   }
 
-  if (footLiberatedCellValue <= 50) {
-    footLiberatedCell.classList.add("stable");
+  if (footLiberatedCellValue <= 50 && footLiberatedCellValue > 0) {
+    footLiberatedCell.classList.add("minuscule-gain");
   }
 
   // set color for foot occupied cell
@@ -205,8 +209,8 @@ function setColor(table) {
     footOccupiedCell.classList.add("insignificant-loss");
   }
 
-  if (footOccupiedCellValue <= 50) {
-    footOccupiedCell.classList.add("stable");
+  if (footOccupiedCellValue <= 50 && footOccupiedCellValue > 0) {
+    footOccupiedCell.classList.add("minuscule-loss");
   }
 
   // set color for foot change cell
@@ -225,8 +229,12 @@ function setColor(table) {
     footChangeCell.classList.add("insignificant-gain");
   }
 
-  if (footChangeCellValue >= -50 && footChangeCellValue <= 50) {
-    footChangeCell.classList.add("stable");
+  if (footChangeCellValue > 0 && footChangeCellValue <= 50) {
+    footChangeCell.classList.add("minuscule-gain");
+  }
+
+  if (footChangeCellValue < 0 && footChangeCellValue >= -50) {
+    footChangeCell.classList.add("minuscule-loss");
   }
 
   if (footChangeCellValue < -50 && footChangeCellValue > -150) {

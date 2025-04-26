@@ -187,7 +187,8 @@ function drawChart(data) {
   const firstDate = d3.min(data, d => d.date);
   const lastDate = d3.max(data, d => d.date);
   const maxYearValue = d3.max(data, d => d.yearLoss);
-  const maxDomainYearValue = Math.ceil(maxYearValue / 500) * 500;
+  const roundTo500 = Math.ceil(maxYearValue / 500) * 500;
+  const maxTickValue = roundTo500 - maxYearValue < 200 ? roundTo500 + 250 : roundTo500;
 
   // Defining the scale for the X and Y axes
   const xScale = d3.scaleTime()
@@ -195,7 +196,7 @@ function drawChart(data) {
     .range([0, innerWidth]);
 
   const yScale = d3.scaleLinear()
-    .domain([0, maxDomainYearValue])
+    .domain([0, maxTickValue])
     .range([innerHeight, 0]);
 
   // Adding X and Y axes
@@ -204,7 +205,7 @@ function drawChart(data) {
     .tickSizeOuter(0);
 
   const yAxis = d3.axisLeft(yScale)
-    .tickValues(d3.range(0, maxDomainYearValue + 1, 250));
+    .tickValues(d3.range(0, maxTickValue + 1, 250));
 
   innerChart
     .append("g")
